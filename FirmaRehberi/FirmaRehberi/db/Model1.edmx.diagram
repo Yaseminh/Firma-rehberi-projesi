@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2de9ef65075f48a7b2f5dc34f9918d8d" Name="Diagram1">
+        <EntityTypeShape EntityType="myPanelDBModel.AddToSite" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Campaigns" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Categories" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Comments" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Companies" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Members" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.MembersCompanies" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Packages" Width="1.5" PointX="6" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.PurchacingPackages" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Roles" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Showcases" Width="1.5" PointX="5.25" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.Users" Width="1.5" PointX="8.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="myPanelDBModel.UsersRoles" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="myPanelDBModel.FK_AddToSite_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_AddToSite_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_Campaigns_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_Companies_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_Comments_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_Comments_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_MembersCompanies_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_PurchacingPackages_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_Showcases_Companies" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_MembersCompanies_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_PurchacingPackages_Packages" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_UsersRoles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="myPanelDBModel.FK_UsersRoles_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

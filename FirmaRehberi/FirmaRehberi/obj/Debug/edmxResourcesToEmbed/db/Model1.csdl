@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myPanelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AddToSite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SearchingCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyCardCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="RosetteCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Id" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Member_Id" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Town" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_AddToSite_Companies" FromRole="AddToSite" ToRole="Companies" />
+    <NavigationProperty Name="Members" Relationship="Self.FK_AddToSite_Members" FromRole="AddToSite" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Campaigns">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CampaignConditions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CampaignDate" Type="DateTime" Precision="3" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AdImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Companies_Id" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Campaigns_Companies" FromRole="Campaigns" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UserBy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="MainCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Companies_Categories" FromRole="Categories" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Member_Id" Type="Int32" Nullable="false" />
+    <Property Name="Company_Id" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Comments_Companies" FromRole="Comments" ToRole="Companies" />
+    <NavigationProperty Name="Members" Relationship="Self.FK_Comments_Members" FromRole="Comments" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkingHours" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMethods" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StarPoint" Type="Int32" />
+    <Property Name="StarGivenMemberCount" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Category_Id" Type="Int32" Nullable="false" />
+    <Property Name="CompanyImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OpenOrClose" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Town" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Brands" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descriptions" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PurchasingPackage_Id" Type="Int32" />
+    <Property Name="NumberOfEmployees" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizedNameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizedDegree" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizedEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AddToSite" Relationship="Self.FK_AddToSite_Companies" FromRole="Companies" ToRole="AddToSite" />
+    <NavigationProperty Name="Campaigns" Relationship="Self.FK_Campaigns_Companies" FromRole="Companies" ToRole="Campaigns" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Companies_Categories" FromRole="Companies" ToRole="Categories" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Companies" FromRole="Companies" ToRole="Comments" />
+    <NavigationProperty Name="MembersCompanies" Relationship="Self.FK_MembersCompanies_Companies" FromRole="Companies" ToRole="MembersCompanies" />
+    <NavigationProperty Name="PurchacingPackages" Relationship="Self.FK_PurchacingPackages_Companies" FromRole="Companies" ToRole="PurchacingPackages" />
+    <NavigationProperty Name="Showcases" Relationship="Self.FK_Showcases_Companies" FromRole="Companies" ToRole="Showcases" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="WaitingComments" Type="Int32" />
+    <Property Name="PublishedComments" Type="Int32" />
+    <Property Name="WaitingRequests" Type="Int32" />
+    <Property Name="PublishedRequests" Type="Int32" />
+    <Property Name="ProfileImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LockoutDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AcessFailedCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AddToSite" Relationship="Self.FK_AddToSite_Members" FromRole="Members" ToRole="AddToSite" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Members" FromRole="Members" ToRole="Comments" />
+    <NavigationProperty Name="MembersCompanies" Relationship="Self.FK_MembersCompanies_Members" FromRole="Members" ToRole="MembersCompanies" />
+  </EntityType>
+  <EntityType Name="MembersCompanies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member_Id" Type="Int32" Nullable="false" />
+    <Property Name="Company_Id" Type="Int32" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_MembersCompanies_Companies" FromRole="MembersCompanies" ToRole="Companies" />
+    <NavigationProperty Name="Members" Relationship="Self.FK_MembersCompanies_Members" FromRole="MembersCompanies" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiscountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PurchacingPackages" Relationship="Self.FK_PurchacingPackages_Packages" FromRole="Packages" ToRole="PurchacingPackages" />
+  </EntityType>
+  <EntityType Name="PurchacingPackages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageId" Type="Int32" Nullable="false" />
+    <Property Name="BillingInfo" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Member_Id" Type="Int32" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Id" Type="Int32" />
+    <Property Name="TaxAdministration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TaxNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="isPurchasing" Type="Boolean" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_PurchacingPackages_Companies" FromRole="PurchacingPackages" ToRole="Companies" />
+    <NavigationProperty Name="Packages" Relationship="Self.FK_PurchacingPackages_Packages" FromRole="PurchacingPackages" ToRole="Packages" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UsersRoles" Relationship="Self.FK_UsersRoles_Roles" FromRole="Roles" ToRole="UsersRoles" />
+  </EntityType>
+  <EntityType Name="Showcases">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Companies_Id" Type="Int32" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OrderNumber" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Showcases_Companies" FromRole="Showcases" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UsersRoles" Relationship="Self.FK_UsersRoles_Users" FromRole="Users" ToRole="UsersRoles" />
+  </EntityType>
+  <EntityType Name="UsersRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_UsersRoles_Roles" FromRole="UsersRoles" ToRole="Roles" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_UsersRoles_Users" FromRole="UsersRoles" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_AddToSite_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+    <End Role="AddToSite" Type="Self.AddToSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddToSite">
+        <PropertyRef Name="Company_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddToSite_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1" />
+    <End Role="AddToSite" Type="Self.AddToSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddToSite">
+        <PropertyRef Name="Member_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Campaigns_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Campaigns">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Companies_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Companies">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Company_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Member_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembersCompanies_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="MembersCompanies" Type="Self.MembersCompanies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembersCompanies">
+        <PropertyRef Name="Company_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchacingPackages_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="PurchacingPackages" Type="Self.PurchacingPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchacingPackages">
+        <PropertyRef Name="Company_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Showcases_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="Showcases" Type="Self.Showcases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Showcases">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembersCompanies_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1" />
+    <End Role="MembersCompanies" Type="Self.MembersCompanies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembersCompanies">
+        <PropertyRef Name="Member_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchacingPackages_Packages">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="1" />
+    <End Role="PurchacingPackages" Type="Self.PurchacingPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchacingPackages">
+        <PropertyRef Name="PackageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersRoles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="UsersRoles" Type="Self.UsersRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersRoles_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UsersRoles" Type="Self.UsersRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersRoles">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="myPanelDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AddToSite" EntityType="Self.AddToSite" />
+    <EntitySet Name="Campaigns" EntityType="Self.Campaigns" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" />
+    <EntitySet Name="Members" EntityType="Self.Members" />
+    <EntitySet Name="MembersCompanies" EntityType="Self.MembersCompanies" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" />
+    <EntitySet Name="PurchacingPackages" EntityType="Self.PurchacingPackages" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Showcases" EntityType="Self.Showcases" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="UsersRoles" EntityType="Self.UsersRoles" />
+    <AssociationSet Name="FK_AddToSite_Companies" Association="Self.FK_AddToSite_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="AddToSite" EntitySet="AddToSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddToSite_Members" Association="Self.FK_AddToSite_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="AddToSite" EntitySet="AddToSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Campaigns_Companies" Association="Self.FK_Campaigns_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Campaigns" EntitySet="Campaigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Companies_Categories" Association="Self.FK_Companies_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Companies" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Companies" Association="Self.FK_Comments_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Members" Association="Self.FK_Comments_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembersCompanies_Companies" Association="Self.FK_MembersCompanies_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="MembersCompanies" EntitySet="MembersCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchacingPackages_Companies" Association="Self.FK_PurchacingPackages_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="PurchacingPackages" EntitySet="PurchacingPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Showcases_Companies" Association="Self.FK_Showcases_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Showcases" EntitySet="Showcases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembersCompanies_Members" Association="Self.FK_MembersCompanies_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="MembersCompanies" EntitySet="MembersCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchacingPackages_Packages" Association="Self.FK_PurchacingPackages_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="PurchacingPackages" EntitySet="PurchacingPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersRoles_Roles" Association="Self.FK_UsersRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UsersRoles" EntitySet="UsersRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersRoles_Users" Association="Self.FK_UsersRoles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersRoles" EntitySet="UsersRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
